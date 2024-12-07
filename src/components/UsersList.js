@@ -16,7 +16,7 @@ function UsersList() {
   }, []);
 
   if (isLoading) {
-    return <Skeleton times={6} />;
+    return <Skeleton times={3} className="h-20 w-100" />;
   }
 
   if (error) {
