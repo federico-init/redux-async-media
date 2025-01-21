@@ -9,11 +9,10 @@ const fetchUsers = createAsyncThunk("users/fetch", async () => {
   return response.data;
 });
 
-// TODO: remove this once project is done
-const pause = (duration) => {
-  return new Promise((resolve) => {
-    setTimeout(resolve, duration);
-  });
-};
+// const pause = (duration) => {
+//   return new Promise((resolve) => {
+//     setTimeout(resolve, duration);
+//   });
+// };
 
 export { fetchUsers };
