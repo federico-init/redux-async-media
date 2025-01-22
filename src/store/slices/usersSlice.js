@@ -58,15 +58,15 @@ const usersSlice = createSlice({
       };
     });
     builder.addCase(deleteUser.fulfilled, (state, action) => {
+      console.log("Deleted user payload:", action.payload);
       return {
         ...state,
         isLoading: false,
-        data: state.data.filter((user) => {
-          return user.id !== action.payload;
-        }),
+        data: state.data.filter((user) => user.id !== action.payload.id),
       };
     });
     builder.addCase(deleteUser.rejected, (state, action) => {
+      console.error("Error deleting user:", action.error);
       return {
         ...state,
         isLoading: false,
