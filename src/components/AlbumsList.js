@@ -1,12 +1,36 @@
 import { useFetchAlbumsQuery } from "../store";
 
+import Skeleton from "./Skeleton";
+import ExpandablePanel from "./ExpandablePanel";
+import Button from "./Button";
+
 function AlbumsList({ user }) {
-  const res = useFetchAlbumsQuery(user);
+  const { data, error, isLoading } = useFetchAlbumsQuery(user);
 
-  // console.log(data, error, isLoading);
-  console.log(res);
+  let content;
 
-  return <div>Albums by {user.name}</div>;
+  if (isLoading) {
+    content = <Skeleton times={3} />;
+  } else if (error) {
+    content = <div>Error loading albums.</div>;
+  } else {
+    content = data.map((album) => {
+      const header = <div>{album.title}</div>;
+
+      return (
+        <ExpandablePanel key={album.id} header={header}>
+          List of photos
+        </ExpandablePanel>
+      );
+    });
+  }
+
+  return (
+    <>
+      <div className="pb-2">Albums by {user.name}</div>
+      <div>{content}</div>
+    </>
+  );
 }
 
 export default AlbumsList;
