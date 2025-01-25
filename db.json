@@ -19,24 +19,14 @@
     {
       "id": "558a",
       "name": "Angel"
-    },
-    {
-      "id": "270b",
-      "name": "Gerson"
-    },
-    {
-      "id": "ff66",
-      "name": "Dominique"
-    },
-    {
-      "id": "ba44",
-      "name": "Freida"
-    },
-    {
-      "id": "9f17",
-      "name": "Jerad"
     }
   ],
-  "albums": [],
+  "albums": [
+    {
+      "id": 10,
+      "title": "Hiking Trip",
+      "userId": 1
+    }
+  ],
   "photos": []
 }
