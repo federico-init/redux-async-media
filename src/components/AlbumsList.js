@@ -1,4 +1,4 @@
-import { useFetchAlbumsQuery } from "../store";
+import { useFetchAlbumsQuery, useCreateAlbumMutation } from "../store";
 
 import Skeleton from "./Skeleton";
 import ExpandablePanel from "./ExpandablePanel";
@@ -6,6 +6,12 @@ import Button from "./Button";
 
 function AlbumsList({ user }) {
   const { data, error, isLoading } = useFetchAlbumsQuery(user);
+
+  const [createAlbum, results] = useCreateAlbumMutation();
+
+  const handleCreateAlbum = () => {
+    createAlbum(user);
+  };
 
   let content;
 
@@ -28,6 +34,7 @@ function AlbumsList({ user }) {
   return (
     <>
       <div className="pb-2">Albums by {user.name}</div>
+      <Button onClick={handleCreateAlbum}>+ Add Album</Button>
       <div>{content}</div>
     </>
   );
